@@ -2,14 +2,23 @@ from covid_data import CovidData
 from data_processor import DataProcessor
 from data_visualizer import DataVisualizer
 
-# Initialize and fetch data
-covid_data = CovidData(api_url='https://covid19api.herokuapp.com')
-covid_data.fetch_data()
+def main():
+    # Instantiate the classes
+    covid_data = CovidData()
+    data_processor = DataProcessor(covid_data)
+    data_visualizer = DataVisualizer(data_processor)
 
-# Process and analyze data
-data_processor = DataProcessor(covid_data.data)
-# Call methods to process and analyze data
+    # Fetch the data using the CovidData class
+    overall_data = covid_data.fetch_overall_data()
+    country_data = covid_data.fetch_data_by_country('USA')  # Replace 'USA' with the desired country
 
-# Create visualizations
-data_visualizer = DataVisualizer(data_processor.data)
-# Call methods to create visualizations
+    # Process the data using the DataProcessor class
+    processed_overall_data = data_processor.process_overall_data(overall_data[0])
+    processed_country_data = data_processor.process_country_data(country_data)
+
+    # Visualize the data using the DataVisualizer class
+    data_visualizer.plot_overall_data(processed_overall_data)
+    data_visualizer.plot_country_data(processed_country_data)
+
+if __name__ == "__main__":
+    main()

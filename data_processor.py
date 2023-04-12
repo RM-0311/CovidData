@@ -37,3 +37,14 @@ class DataProcessor:
             "total_recoveries": df["recovered"].sum()
         }
         return analysis
+
+    def process_overall_data(self, overall_data):
+      processed_data = {
+          'TotalConfirmed': overall_data['TotalConfirmed'],
+          'TotalDeaths': overall_data['TotalDeaths'],
+          'TotalRecovered': overall_data['TotalRecovered'],
+          'NewConfirmed': overall_data['NewConfirmed'],
+          'NewDeaths': overall_data['NewDeaths'],
+          'NewRecovered': overall_data['NewRecovered'],
+      }
+      return processed_data
