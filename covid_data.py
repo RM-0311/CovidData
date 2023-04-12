@@ -17,9 +17,13 @@ class CovidData:
         response = requests.get(f"{self.base_url}/countries/{country}")
         if response.status_code == 200:
             self.data = response.json()
+            print(data)
+            return data
         else:
             print("Error fetching data:", response.status_code)
-
+            print(response.content)
+            return None
+        
     def fetch_overall_data(self):
         # Fetch overall data
         url = "https://api.covid19api.com/world"

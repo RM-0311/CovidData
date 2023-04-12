@@ -14,6 +14,7 @@ def main():
 
     # Process the data using the DataProcessor class
     processed_overall_data = data_processor.process_overall_data(overall_data[0])
+    print(country_data)
     processed_country_data = data_processor.process_country_data(country_data)
 
     # Visualize the data using the DataVisualizer class
