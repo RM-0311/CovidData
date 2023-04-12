@@ -8,13 +8,34 @@ def main():
     data_processor = DataProcessor(covid_data)
     data_visualizer = DataVisualizer(data_processor)
 
-    # Fetch the data using the CovidData class
-    overall_data = covid_data.fetch_overall_data()
-    country_data = covid_data.fetch_data_by_country('USA')  # Replace 'USA' with the desired country
-
+    # STATIC DATA - API IS DOWN
+    overall_data = {
+        "TotalConfirmed": 100000,
+        "TotalDeaths": 2000,
+        "TotalRecovered": 95000,
+        "NewConfirmed": 100,  
+        "NewDeaths": 10,
+        "NewRecovered": 90
+    }
+    country_data = [
+        {
+            "Country": "United States",
+            "Cases": 1000,
+            "Date": "2023-01-01T00:00:00Z",
+        },
+        {
+            "Country": "United States",
+            "Cases": 2000,
+            "Date": "2023-01-02T00:00:00Z",
+        },
+        {
+            "Country": "United States",
+            "Cases": 3000,
+            "Date": "2023-01-03T00:00:00Z",
+        },
+    ]
     # Process the data using the DataProcessor class
-    processed_overall_data = data_processor.process_overall_data(overall_data[0])
-    print(country_data)
+    processed_overall_data = data_processor.process_overall_data(overall_data)
     processed_country_data = data_processor.process_country_data(country_data)
 
     # Visualize the data using the DataVisualizer class
