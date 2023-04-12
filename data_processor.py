@@ -48,3 +48,20 @@ class DataProcessor:
           'NewRecovered': overall_data['NewRecovered'],
       }
       return processed_data
+
+    def process_country_data(self, country_data):
+      processed_data = []
+      for data in country_data:
+          processed_data.append({
+              'Country': data['Country'],
+              'CountryCode': data['CountryCode'],
+              'Slug': data['Slug'],
+              'NewConfirmed': data['NewConfirmed'],
+              'TotalConfirmed': data['TotalConfirmed'],
+              'NewDeaths': data['NewDeaths'],
+              'TotalDeaths': data['TotalDeaths'],
+              'NewRecovered': data['NewRecovered'],
+              'TotalRecovered': data['TotalRecovered'],
+              'Date': data['Date']
+          })
+      return processed_data
